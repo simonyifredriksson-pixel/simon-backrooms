@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Backrooms — Level 0</title>
+<link rel="stylesheet" href="style.css" />
+<script>
+  window.addEventListener("error", (e) => {
+    const el = document.getElementById("loadinfo");
+    if (el) el.textContent = "⚠ " + (e.message || (e.error && e.error.message) || "load error");
+  });
+</script>
+</head>
+<body>
+  <div id="game">
+    <canvas id="canvas"></canvas>
+    <div id="crosshair">·</div>
+    <div id="vignette"></div>
+    <div id="grain"></div>
+
+    <div id="hud">
+      <div class="top-left">
+        <div class="stat">📍 <span id="zone">The Lobby</span></div>
+        <div class="stat">🔑 Exit: <span id="exits">0</span> / <span id="exitsTotal">1</span></div>
+        <div class="stat">⏱️ <span id="clock">0:00</span></div>
+      </div>
+      <div class="top-right">
+        <div class="res">⚡ Stamina</div>
+        <div class="bar"><div id="stamina-fill" class="fill stamina"></div></div>
+        <div class="res">🔦 Battery</div>
+        <div class="bar"><div id="battery-fill" class="fill battery"></div></div>
+        <div class="res">💛 Sanity</div>
+        <div class="bar"><div id="sanity-fill" class="fill sanity"></div></div>
+        <div class="res">🍖 Hunger</div>
+        <div class="bar"><div id="hunger-fill" class="fill hunger"></div></div>
+        <div class="res">💧 Thirst</div>
+        <div class="bar"><div id="thirst-fill" class="fill thirst"></div></div>
+      </div>
+
+      <div id="audiobtns">
+        <button id="mute-music" title="Mute music (M)">🎵</button>
+        <button id="mute-sfx" title="Mute scream/SFX (N)">🔊</button>
+      </div>
+      <div id="prompt"></div>
+      <div id="controls-hint">
+        <b>WASD</b> move · <b>Mouse</b> look · <b>Shift</b> sprint · <b>F</b> flashlight · <b>E</b> use exit ·
+        <b>M</b> mute music · <b>N</b> mute SFX
+      </div>
+    </div>
+
+    <div id="dangerbar" class="hidden">
+      <div class="db-label">⚠ IT SEES YOU</div>
+    </div>
+
+    <div id="radar" class="hidden">
+      <div id="radar-ring"></div>
+      <div id="radar-arrow">▲</div>
+      <div id="radar-timer"></div>
+      <div id="radar-label">EXIT</div>
+    </div>
+
+    <div id="screamwarn" class="hidden">IT KNOWS YOUR POSITION — RUN</div>
+
+    <div id="toast"></div>
+    <div id="dmgflash"></div>
+
+    <div id="jumpscare" class="hidden">
+      <div id="js-face">
+        <div class="js-eye left"></div>
+        <div class="js-eye right"></div>
+        <div class="js-smile"></div>
+      </div>
+    </div>
+
+    <div id="overlay">
+      <div id="overlay-card">
+        <div id="overlay-icon">🚪</div>
+        <h1 id="overlay-title">THE BACKROOMS</h1>
+        <p id="overlay-text">
+          You've <b>no-clipped</b> out of reality into the endless yellow rooms. Damp carpet,
+          buzzing fluorescent lights, the smell of moist mono-yellow wallpaper.<br><br>
+          You are <b>not alone.</b> Something — gaunt, fleshless, wrong — stalks the halls.
+          If it sees you, it hunts. <b>Sprint</b> to escape, but watch your stamina.<br><br>
+          The longer you're near it, the more your <b>sanity</b> frays: walls breathe, corridors
+          shrink, hallways vanish behind you, colors bleed. Every <b>30 seconds it screams</b> and
+          knows exactly where you are — when you see the warning, <b>RUN</b>.<br><br>
+          Find the <b>one hidden exit</b>. Pick up <b>📡 trackers</b> for a 4-second pointer to it.
+          You'll slowly grow <b>hungry and thirsty</b> — scavenge <b>🥫 condensed food</b> and
+          <b>💧 water bottles</b> from <b>corpses and tents</b>. Use your <b>flashlight</b> (F) to
+          see, but it makes you easier to spot.<br><br>
+          🔊 <b>Sound on.</b> Headphones recommended. Mute music with <b>M</b>, the scream with <b>N</b>.
+          <b>Good luck.</b>
+        </p>
+        <button id="startbtn">▶ Enter the Backrooms</button>
+        <div class="hint">Click the screen to capture the mouse · <b>Esc</b> releases it</div>
+        <div class="hint" id="loadinfo">Loading 3D engine…</div>
+      </div>
+    </div>
+
+    <div id="endscreen" class="hidden">
+      <div id="end-card">
+        <div id="end-icon">💀</div>
+        <h1 id="end-title">CAUGHT</h1>
+        <p id="end-text"></p>
+        <button id="restartbtn">↺ Try Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="three.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
