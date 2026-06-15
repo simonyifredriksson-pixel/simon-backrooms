@@ -18,6 +18,7 @@
     <div id="crosshair">·</div>
     <div id="vignette"></div>
     <div id="grain"></div>
+    <div id="hidemask" class="hidden"></div>
 
     <div id="hud">
       <div class="top-left">
@@ -44,9 +45,10 @@
       </div>
       <div id="prompt"></div>
       <div id="controls-hint">
-        <b>WASD</b> move · <b>Mouse</b> look · <b>Shift</b> sprint · <b>F</b> flashlight · <b>E</b> use exit ·
+        <b>WASD</b> move · <b>Mouse</b> look · <b>Shift</b> sprint · <b>F</b> flashlight · <b>E</b> pick up / use exit · <b>Tab</b> inventory ·
         <b>M</b> mute music · <b>N</b> mute SFX
       </div>
+      <div id="stamina-bar"><div id="stamina-bar-fill"></div></div>
     </div>
 
     <div id="dangerbar" class="hidden">
@@ -65,12 +67,9 @@
     <div id="toast"></div>
     <div id="dmgflash"></div>
 
-    <div id="jumpscare" class="hidden">
-      <div id="js-face">
-        <div class="js-eye left"></div>
-        <div class="js-eye right"></div>
-        <div class="js-smile"></div>
-      </div>
+    <div id="devour" class="hidden">
+      <div id="devour-flesh"></div>
+      <div id="devour-blood"></div>
     </div>
 
     <div id="overlay">
@@ -80,8 +79,9 @@
         <p id="overlay-text">
           You've <b>no-clipped</b> out of reality into the endless yellow rooms. Damp carpet,
           buzzing fluorescent lights, the smell of moist mono-yellow wallpaper.<br><br>
-          You are <b>not alone.</b> Something — gaunt, fleshless, wrong — stalks the halls.
-          If it sees you, it hunts. <b>Sprint</b> to escape, but watch your stamina.<br><br>
+          You are <b>not alone.</b> Something — gaunt, fleshless, grinning — hunts the halls.
+          Once it knows where you are it <b>never stops coming</b>, and the moment you look away
+          it <b>sprints</b>. You can't fight it — only <b>run</b>. Watch your stamina.<br><br>
           The longer you're near it, the more your <b>sanity</b> frays: walls breathe, corridors
           shrink, hallways vanish behind you, colors bleed. Every <b>30 seconds it screams</b> and
           knows exactly where you are — when you see the warning, <b>RUN</b>.<br><br>
@@ -104,6 +104,14 @@
         <h1 id="end-title">CAUGHT</h1>
         <p id="end-text"></p>
         <button id="restartbtn">↺ Try Again</button>
+      </div>
+    </div>
+
+    <div id="inventory" class="hidden">
+      <div id="inv-card">
+        <h2>INVENTORY</h2>
+        <div id="inv-items"></div>
+        <div class="hint">Click an item to use it · <b>Tab</b> / <b>Esc</b> to close</div>
       </div>
     </div>
   </div>
